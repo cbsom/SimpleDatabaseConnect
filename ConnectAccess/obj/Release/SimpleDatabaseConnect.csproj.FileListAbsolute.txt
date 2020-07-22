@@ -1,0 +1,10 @@
+D:\repos_git\SimpleDatabaseConnect\ConnectAccess\obj\Release\SimpleDatabaseConnect.csprojAssemblyReference.cache
+D:\repos_git\SimpleDatabaseConnect\ConnectAccess\obj\Release\SimpleDatabaseConnect.Form1.resources
+D:\repos_git\SimpleDatabaseConnect\ConnectAccess\obj\Release\SimpleDatabaseConnect.csproj.GenerateResource.cache
+D:\repos_git\SimpleDatabaseConnect\ConnectAccess\obj\Release\SimpleDatabaseConnect.csproj.CoreCompileInputs.cache
+D:\repos_git\SimpleDatabaseConnect\ConnectAccess\bin\Release\SimpleDatabaseConnect.exe.config
+D:\repos_git\SimpleDatabaseConnect\ConnectAccess\bin\Release\SimpleDatabaseConnect.exe
+D:\repos_git\SimpleDatabaseConnect\ConnectAccess\bin\Release\SimpleDatabaseConnect.pdb
+D:\repos_git\SimpleDatabaseConnect\ConnectAccess\obj\Release\SimpleDatabaseConnect.Properties.Resources.resources
+D:\repos_git\SimpleDatabaseConnect\ConnectAccess\obj\Release\SimpleDatabaseConnect.exe
+D:\repos_git\SimpleDatabaseConnect\ConnectAccess\obj\Release\SimpleDatabaseConnect.pdb

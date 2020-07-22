@@ -1,4 +1,4 @@
-﻿namespace SimpleDatabaseConect
+﻿namespace SimpleDatabaseConnect
 {
     partial class Form1
     {
@@ -93,8 +93,8 @@
             // 
             this.radioButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = global::SimpleDatabaseConect.Properties.Settings.Default.SqlServer;
-            this.radioButton2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SimpleDatabaseConect.Properties.Settings.Default, "SqlServer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.radioButton2.Checked = global::SimpleDatabaseConnect.Properties.Settings.Default.SqlServer;
+            this.radioButton2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SimpleDatabaseConnect.Properties.Settings.Default, "SqlServer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.radioButton2.Location = new System.Drawing.Point(591, 81);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(106, 22);
@@ -108,8 +108,8 @@
             // 
             this.rbOleDb.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.rbOleDb.AutoSize = true;
-            this.rbOleDb.Checked = global::SimpleDatabaseConect.Properties.Settings.Default.OleDbChecked;
-            this.rbOleDb.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SimpleDatabaseConect.Properties.Settings.Default, "OleDbChecked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.rbOleDb.Checked = global::SimpleDatabaseConnect.Properties.Settings.Default.OleDbChecked;
+            this.rbOleDb.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SimpleDatabaseConnect.Properties.Settings.Default, "OleDbChecked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.rbOleDb.Location = new System.Drawing.Point(493, 81);
             this.rbOleDb.Name = "rbOleDb";
             this.rbOleDb.Size = new System.Drawing.Size(71, 22);
@@ -122,26 +122,26 @@
             // 
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SimpleDatabaseConect.Properties.Settings.Default, "SQL", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SimpleDatabaseConnect.Properties.Settings.Default, "SQL", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBox2.Location = new System.Drawing.Point(15, 113);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(1170, 90);
             this.textBox2.TabIndex = 3;
-            this.textBox2.Text = global::SimpleDatabaseConect.Properties.Settings.Default.SQL;
+            this.textBox2.Text = global::SimpleDatabaseConnect.Properties.Settings.Default.SQL;
             // 
             // textBox1
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SimpleDatabaseConect.Properties.Settings.Default, "conString", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SimpleDatabaseConnect.Properties.Settings.Default, "conString", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.textBox1.Location = new System.Drawing.Point(15, 48);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(1170, 24);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = global::SimpleDatabaseConect.Properties.Settings.Default.conString;
+            this.textBox1.Text = global::SimpleDatabaseConnect.Properties.Settings.Default.conString;
             // 
             // tbError
             // 

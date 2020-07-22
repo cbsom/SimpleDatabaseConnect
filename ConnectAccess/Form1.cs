@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Data.SqlClient;
 
-namespace SimpleDatabaseConect
+namespace SimpleDatabaseConnect
 {
     public partial class Form1 : Form
     {
