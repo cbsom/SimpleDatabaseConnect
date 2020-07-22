@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ConnectAccess.Properties {
+namespace SimpleDatabaseConect.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -44,6 +44,30 @@ namespace ConnectAccess.Properties {
             }
             set {
                 this["SQL"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool OleDbChecked {
+            get {
+                return ((bool)(this["OleDbChecked"]));
+            }
+            set {
+                this["OleDbChecked"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool SqlServer {
+            get {
+                return ((bool)(this["SqlServer"]));
+            }
+            set {
+                this["SqlServer"] = value;
             }
         }
     }
