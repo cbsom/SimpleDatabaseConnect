@@ -25,7 +25,7 @@ namespace SimpleDatabaseConnect.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("server=.\\SQLEXPRESS;database=*******;uid=*******;Password=*********;")]
         public string conString {
             get {
                 return ((string)(this["conString"]));
@@ -49,25 +49,13 @@ namespace SimpleDatabaseConnect.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool OleDbChecked {
+        [global::System.Configuration.DefaultSettingValueAttribute("SqlServer")]
+        public string Provider {
             get {
-                return ((bool)(this["OleDbChecked"]));
+                return ((string)(this["Provider"]));
             }
             set {
-                this["OleDbChecked"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool SqlServer {
-            get {
-                return ((bool)(this["SqlServer"]));
-            }
-            set {
-                this["SqlServer"] = value;
+                this["Provider"] = value;
             }
         }
     }

@@ -1,9 +1,0 @@
-D:\repos_git\SimpleDatabaseConect\ConnectAccess\bin\Release\SimpleDatabaseConect.exe.config
-D:\repos_git\SimpleDatabaseConect\ConnectAccess\bin\Release\SimpleDatabaseConect.exe
-D:\repos_git\SimpleDatabaseConect\ConnectAccess\bin\Release\SimpleDatabaseConect.pdb
-D:\repos_git\SimpleDatabaseConect\ConnectAccess\obj\Release\SimpleDatabaseConect.Form1.resources
-D:\repos_git\SimpleDatabaseConect\ConnectAccess\obj\Release\SimpleDatabaseConect.Properties.Resources.resources
-D:\repos_git\SimpleDatabaseConect\ConnectAccess\obj\Release\SimpleDatabaseConect.csproj.GenerateResource.cache
-D:\repos_git\SimpleDatabaseConect\ConnectAccess\obj\Release\SimpleDatabaseConect.csproj.CoreCompileInputs.cache
-D:\repos_git\SimpleDatabaseConect\ConnectAccess\obj\Release\SimpleDatabaseConect.exe
-D:\repos_git\SimpleDatabaseConect\ConnectAccess\obj\Release\SimpleDatabaseConect.pdb

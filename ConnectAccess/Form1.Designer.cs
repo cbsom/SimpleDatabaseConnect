@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.tbError = new System.Windows.Forms.TextBox();
+            this.rbOdbc = new System.Windows.Forms.RadioButton();
+            this.rbSqlServer = new System.Windows.Forms.RadioButton();
             this.rbOleDb = new System.Windows.Forms.RadioButton();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tbError = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -64,23 +69,27 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.ColumnHeadersHeight = 29;
             this.dataGridView1.Location = new System.Drawing.Point(15, 313);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(1171, 278);
+            this.dataGridView1.Size = new System.Drawing.Size(1370, 357);
             this.dataGridView1.TabIndex = 4;
             // 
             // button1
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.button1.Location = new System.Drawing.Point(1072, 227);
+            this.button1.Location = new System.Drawing.Point(1271, 227);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 76);
@@ -88,60 +97,6 @@
             this.button1.Text = "Go";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // radioButton2
-            // 
-            this.radioButton2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Checked = global::SimpleDatabaseConnect.Properties.Settings.Default.SqlServer;
-            this.radioButton2.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SimpleDatabaseConnect.Properties.Settings.Default, "SqlServer", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.radioButton2.Location = new System.Drawing.Point(591, 81);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(106, 22);
-            this.radioButton2.TabIndex = 6;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "SQL Server";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
-            // 
-            // rbOleDb
-            // 
-            this.rbOleDb.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.rbOleDb.AutoSize = true;
-            this.rbOleDb.Checked = global::SimpleDatabaseConnect.Properties.Settings.Default.OleDbChecked;
-            this.rbOleDb.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::SimpleDatabaseConnect.Properties.Settings.Default, "OleDbChecked", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.rbOleDb.Location = new System.Drawing.Point(493, 81);
-            this.rbOleDb.Name = "rbOleDb";
-            this.rbOleDb.Size = new System.Drawing.Size(71, 22);
-            this.rbOleDb.TabIndex = 6;
-            this.rbOleDb.Text = "OleDb";
-            this.rbOleDb.UseVisualStyleBackColor = true;
-            this.rbOleDb.CheckedChanged += new System.EventHandler(this.rbOleDb_CheckedChanged);
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SimpleDatabaseConnect.Properties.Settings.Default, "SQL", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBox2.Location = new System.Drawing.Point(15, 113);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(1170, 90);
-            this.textBox2.TabIndex = 3;
-            this.textBox2.Text = global::SimpleDatabaseConnect.Properties.Settings.Default.SQL;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SimpleDatabaseConnect.Properties.Settings.Default, "conString", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.textBox1.Location = new System.Drawing.Point(15, 48);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1170, 24);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = global::SimpleDatabaseConnect.Properties.Settings.Default.conString;
             // 
             // tbError
             // 
@@ -154,18 +109,101 @@
             this.tbError.Multiline = true;
             this.tbError.Name = "tbError";
             this.tbError.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbError.Size = new System.Drawing.Size(1036, 94);
+            this.tbError.Size = new System.Drawing.Size(1235, 94);
             this.tbError.TabIndex = 7;
             this.tbError.Visible = false;
+            // 
+            // rbOdbc
+            // 
+            this.rbOdbc.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rbOdbc.AutoSize = true;
+            this.rbOdbc.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.rbOdbc.FlatAppearance.BorderSize = 4;
+            this.rbOdbc.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green;
+            this.rbOdbc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rbOdbc.Location = new System.Drawing.Point(11, 8);
+            this.rbOdbc.Name = "rbOdbc";
+            this.rbOdbc.Size = new System.Drawing.Size(64, 22);
+            this.rbOdbc.TabIndex = 8;
+            this.rbOdbc.Text = "Odbc";
+            this.rbOdbc.UseVisualStyleBackColor = true;
+            // 
+            // rbSqlServer
+            // 
+            this.rbSqlServer.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rbSqlServer.AutoSize = true;
+            this.rbSqlServer.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.rbSqlServer.FlatAppearance.BorderSize = 4;
+            this.rbSqlServer.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green;
+            this.rbSqlServer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rbSqlServer.Location = new System.Drawing.Point(203, 8);
+            this.rbSqlServer.Name = "rbSqlServer";
+            this.rbSqlServer.Size = new System.Drawing.Size(105, 22);
+            this.rbSqlServer.TabIndex = 6;
+            this.rbSqlServer.TabStop = true;
+            this.rbSqlServer.Text = "SQL Server";
+            this.rbSqlServer.UseVisualStyleBackColor = true;
+            // 
+            // rbOleDb
+            // 
+            this.rbOleDb.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.rbOleDb.AutoSize = true;
+            this.rbOleDb.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.rbOleDb.FlatAppearance.BorderSize = 4;
+            this.rbOleDb.FlatAppearance.CheckedBackColor = System.Drawing.Color.Green;
+            this.rbOleDb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.rbOleDb.Location = new System.Drawing.Point(104, 8);
+            this.rbOleDb.Name = "rbOleDb";
+            this.rbOleDb.Size = new System.Drawing.Size(70, 22);
+            this.rbOleDb.TabIndex = 6;
+            this.rbOleDb.Text = "OleDb";
+            this.rbOleDb.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox2.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SimpleDatabaseConnect.Properties.Settings.Default, "SQL", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox2.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.textBox2.ForeColor = System.Drawing.Color.DarkSlateGray;
+            this.textBox2.Location = new System.Drawing.Point(15, 113);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox2.Multiline = true;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(1369, 90);
+            this.textBox2.TabIndex = 3;
+            this.textBox2.Text = global::SimpleDatabaseConnect.Properties.Settings.Default.SQL;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SimpleDatabaseConnect.Properties.Settings.Default, "conString", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.textBox1.Location = new System.Drawing.Point(15, 48);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(1369, 24);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = global::SimpleDatabaseConnect.Properties.Settings.Default.conString;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel1.Controls.Add(this.rbSqlServer);
+            this.panel1.Controls.Add(this.rbOdbc);
+            this.panel1.Controls.Add(this.rbOleDb);
+            this.panel1.Location = new System.Drawing.Point(539, 74);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(320, 36);
+            this.panel1.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1200, 623);
+            this.ClientSize = new System.Drawing.Size(1399, 702);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tbError);
-            this.Controls.Add(this.radioButton2);
-            this.Controls.Add(this.rbOleDb);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox2);
@@ -173,10 +211,13 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Simple Database Conect";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,8 +232,10 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RadioButton rbOleDb;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton rbSqlServer;
         private System.Windows.Forms.TextBox tbError;
+        private System.Windows.Forms.RadioButton rbOdbc;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 

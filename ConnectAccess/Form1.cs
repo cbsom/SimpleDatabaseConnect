@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.Data.Odbc;
+using System.Data.Common;
 
 namespace SimpleDatabaseConnect
 {
@@ -17,57 +19,77 @@ namespace SimpleDatabaseConnect
         public Form1()
         {
             InitializeComponent();
+            switch (Properties.Settings.Default.Provider)
+            {
+                case "OleDb":
+                    this.rbOleDb.Checked = true;
+                    break;
+                case "SqlServer":
+                    this.rbSqlServer.Checked = true;
+                    break;
+                case "Odbc":
+                    this.rbOdbc.Checked = true;
+                    break;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
+            DbConnection con = null;
+            DbDataAdapter adp = null;
             string err = null;
 
-            Properties.Settings.Default.Save();
             try
             {
-                if (Properties.Settings.Default.OleDbChecked)
+                if (this.rbOleDb.Checked)
                 {
-                    try
+                    Properties.Settings.Default.Provider = "OleDb";
+                    con = new OleDbConnection(this.textBox1.Text.Trim());
+                    adp = new OleDbDataAdapter(this.textBox2.Text, con as OleDbConnection);
+                }
+                else if (this.rbSqlServer.Checked)
+                {
+                    Properties.Settings.Default.Provider = "SqlServer";
+                    con = new SqlConnection(this.textBox1.Text.Trim());
+                    adp = new SqlDataAdapter(this.textBox2.Text, con as SqlConnection);
+                }
+                else if (this.rbOdbc.Checked)
+                {
+                    Properties.Settings.Default.Provider = "Odbc";
+                    con = new OdbcConnection(this.textBox1.Text.Trim());
+                    adp = new OdbcDataAdapter(this.textBox2.Text, con as OdbcConnection);
+                }
+
+                Properties.Settings.Default.Save();
+
+                try
+                {
+                    using (con)
                     {
-                        using (var con = new OleDbConnection(this.textBox1.Text))
+                        using (adp)
                         {
-                            using (var adptr = new OleDbDataAdapter(this.textBox2.Text, con))
-                            {
-                                DataSet ds = new DataSet();
-                                adptr.Fill(ds);
-                                this.dataGridView1.DataSource = ds.Tables[0];
-                                this.dataGridView1.Refresh();
-                            }
+                            DataSet ds = new DataSet();
+                            adp.Fill(ds);
+                            this.dataGridView1.DataSource = ds.Tables[0];
+                            this.dataGridView1.Refresh();
                         }
-                    }
-                    catch (OleDbException oe)
-                    {
-                        err = oe.Message + Environment.NewLine + oe.StackTrace;
                     }
                 }
-                else if (Properties.Settings.Default.SqlServer)
+
+                catch (OleDbException oe)
                 {
-                    try
-                    {
-                        using (var con = new SqlConnection(this.textBox1.Text))
-                        {
-                            using (var adptr = new SqlDataAdapter(this.textBox2.Text, con))
-                            {
-                                DataSet ds = new DataSet();
-                                adptr.Fill(ds);
-                                this.dataGridView1.DataSource = ds.Tables[0];
-                                this.dataGridView1.Refresh();
-                            }
-                        }
-                    }
-                    catch (SqlException se)
-                    {
-                        err = se.Message + Environment.NewLine + se.StackTrace;
-                    }
+                    err = oe.Message + Environment.NewLine + oe.StackTrace;
+                }
+                catch (SqlException se)
+                {
+                    err = se.Message + Environment.NewLine + se.StackTrace;
+                }
+                catch (OdbcException de)
+                {
+                    err = de.Message + Environment.NewLine + de.StackTrace;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 err = ex.Message + Environment.NewLine + ex.StackTrace;
             }
@@ -75,16 +97,5 @@ namespace SimpleDatabaseConnect
             this.tbError.Text = err;
         }
 
-
-
-        private void rbOleDb_CheckedChanged(object sender, EventArgs e)
-        {
-            this.radioButton2.Checked = !rbOleDb.Checked;
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-            this.rbOleDb.Checked = !radioButton2.Checked;
-        }
     }
 }

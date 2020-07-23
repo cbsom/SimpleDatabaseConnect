@@ -3,16 +3,13 @@
   <Profiles />
   <Settings>
     <Setting Name="conString" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">server=.\SQLEXPRESS;database=*******;uid=*******;Password=*********;</Value>
     </Setting>
     <Setting Name="SQL" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="OleDbChecked" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="SqlServer" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
+    <Setting Name="Provider" Type="System.String" Scope="User">
+      <Value Profile="(Default)">SqlServer</Value>
     </Setting>
   </Settings>
 </SettingsFile>
