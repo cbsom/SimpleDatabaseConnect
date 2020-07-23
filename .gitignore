@@ -9,3 +9,4 @@ workspace.xml
 .git**
 *.lnk
 packages/
+Release
