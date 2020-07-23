@@ -45,19 +45,19 @@ namespace SimpleDatabaseConnect
                 {
                     Properties.Settings.Default.Provider = "OleDb";
                     con = new OleDbConnection(this.textBox1.Text.Trim());
-                    adp = new OleDbDataAdapter(this.textBox2.Text, con as OleDbConnection);
+                    adp = new OleDbDataAdapter(this.fastColoredTextBox1.Text, con as OleDbConnection);
                 }
                 else if (this.rbSqlServer.Checked)
                 {
                     Properties.Settings.Default.Provider = "SqlServer";
                     con = new SqlConnection(this.textBox1.Text.Trim());
-                    adp = new SqlDataAdapter(this.textBox2.Text, con as SqlConnection);
+                    adp = new SqlDataAdapter(this.fastColoredTextBox1.Text, con as SqlConnection);
                 }
                 else if (this.rbOdbc.Checked)
                 {
                     Properties.Settings.Default.Provider = "Odbc";
                     con = new OdbcConnection(this.textBox1.Text.Trim());
-                    adp = new OdbcDataAdapter(this.textBox2.Text, con as OdbcConnection);
+                    adp = new OdbcDataAdapter(this.fastColoredTextBox1.Text, con as OdbcConnection);
                 }
 
                 Properties.Settings.Default.Save();
