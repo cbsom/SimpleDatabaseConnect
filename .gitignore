@@ -1,0 +1,11 @@
+syntax: glob
+*.suo
+obj/
+bin/
+Thumbs.db
+.vs/
+*.user
+workspace.xml
+.git**
+*.lnk
+packages/
