@@ -1,22 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using System.Data.Common;
+using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Data.SqlClient;
-using System.Data.Odbc;
-using System.Data.Common;
+using System.Windows.Forms;
 
 namespace SimpleDatabaseConnect
 {
-    public partial class Form1 : Form
+    public partial class FrmMain : Form
     {
-        public Form1()
+        public FrmMain()
         {
             InitializeComponent();
             switch (Properties.Settings.Default.Provider)
@@ -33,11 +27,27 @@ namespace SimpleDatabaseConnect
             }
         }
 
+        private void frmMain_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.F5)
+            {
+                this.ExecuteSql();
+            }
+        }
+
         private void button1_Click(object sender, EventArgs e)
+        {
+            this.ExecuteSql();
+        }
+
+        private void ExecuteSql()
         {
             DbConnection con = null;
             DbDataAdapter adp = null;
             string err = null;
+            string sql = this.fastColoredTextBox1.Selection.IsEmpty
+                ? this.fastColoredTextBox1.Text
+                : this.fastColoredTextBox1.Selection.Text;
 
             try
             {
@@ -45,19 +55,19 @@ namespace SimpleDatabaseConnect
                 {
                     Properties.Settings.Default.Provider = "OleDb";
                     con = new OleDbConnection(this.textBox1.Text.Trim());
-                    adp = new OleDbDataAdapter(this.fastColoredTextBox1.Text, con as OleDbConnection);
+                    adp = new OleDbDataAdapter(sql, con as OleDbConnection);
                 }
                 else if (this.rbSqlServer.Checked)
                 {
                     Properties.Settings.Default.Provider = "SqlServer";
                     con = new SqlConnection(this.textBox1.Text.Trim());
-                    adp = new SqlDataAdapter(this.fastColoredTextBox1.Text, con as SqlConnection);
+                    adp = new SqlDataAdapter(sql, con as SqlConnection);
                 }
                 else if (this.rbOdbc.Checked)
                 {
                     Properties.Settings.Default.Provider = "Odbc";
                     con = new OdbcConnection(this.textBox1.Text.Trim());
-                    adp = new OdbcDataAdapter(this.fastColoredTextBox1.Text, con as OdbcConnection);
+                    adp = new OdbcDataAdapter(sql, con as OdbcConnection);
                 }
 
                 Properties.Settings.Default.Save();
@@ -94,8 +104,7 @@ namespace SimpleDatabaseConnect
                 err = ex.Message + Environment.NewLine + ex.StackTrace;
             }
             this.tbError.Visible = !string.IsNullOrEmpty(err);
-            this.tbError.Text = err;
-        }
-
+            this.tbError.Text = err;            
+        }        
     }
 }
