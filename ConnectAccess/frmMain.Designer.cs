@@ -43,9 +43,13 @@
             this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tbMessage = new System.Windows.Forms.TextBox();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.rowCountStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.buttonExportToExcel = new System.Windows.Forms.ToolStripSplitButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -54,7 +58,7 @@
             this.label1.Location = new System.Drawing.Point(12, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 18);
+            this.label1.Size = new System.Drawing.Size(104, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Connection String";
             // 
@@ -74,8 +78,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowHeadersWidth = 50;
             this.dataGridView1.Size = new System.Drawing.Size(1370, 357);
             this.dataGridView1.TabIndex = 4;
             // 
@@ -110,7 +113,7 @@
             this.tbError.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbError.Size = new System.Drawing.Size(1368, 357);
             this.tbError.TabIndex = 7;
-            this.tbError.Visible = false;            
+            this.tbError.Visible = false;
             // 
             // rbOdbc
             // 
@@ -122,7 +125,7 @@
             this.rbOdbc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.rbOdbc.Location = new System.Drawing.Point(9, 8);
             this.rbOdbc.Name = "rbOdbc";
-            this.rbOdbc.Size = new System.Drawing.Size(64, 22);
+            this.rbOdbc.Size = new System.Drawing.Size(53, 19);
             this.rbOdbc.TabIndex = 0;
             this.rbOdbc.Text = "Odbc";
             this.rbOdbc.UseVisualStyleBackColor = true;
@@ -137,7 +140,7 @@
             this.rbSqlServer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.rbSqlServer.Location = new System.Drawing.Point(155, 7);
             this.rbSqlServer.Name = "rbSqlServer";
-            this.rbSqlServer.Size = new System.Drawing.Size(105, 22);
+            this.rbSqlServer.Size = new System.Drawing.Size(86, 19);
             this.rbSqlServer.TabIndex = 6;
             this.rbSqlServer.TabStop = true;
             this.rbSqlServer.Text = "SQL Server";
@@ -153,7 +156,7 @@
             this.rbOleDb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.rbOleDb.Location = new System.Drawing.Point(79, 8);
             this.rbOleDb.Name = "rbOleDb";
-            this.rbOleDb.Size = new System.Drawing.Size(70, 22);
+            this.rbOleDb.Size = new System.Drawing.Size(59, 19);
             this.rbOleDb.TabIndex = 1;
             this.rbOleDb.Text = "OleDb";
             this.rbOleDb.UseVisualStyleBackColor = true;
@@ -167,7 +170,7 @@
             this.textBox1.Location = new System.Drawing.Point(137, 38);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1167, 26);
+            this.textBox1.Size = new System.Drawing.Size(1167, 23);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = global::SimpleDatabaseConnect.Properties.Settings.Default.conString;
             // 
@@ -198,11 +201,11 @@
         '\'',
         '\''};
             this.fastColoredTextBox1.AutoIndentCharsPatterns = "";
-            this.fastColoredTextBox1.AutoScrollMinSize = new System.Drawing.Size(33, 20);
+            this.fastColoredTextBox1.AutoScrollMinSize = new System.Drawing.Size(29, 16);
             this.fastColoredTextBox1.BackBrush = null;
             this.fastColoredTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fastColoredTextBox1.CharHeight = 20;
-            this.fastColoredTextBox1.CharWidth = 11;
+            this.fastColoredTextBox1.CharHeight = 16;
+            this.fastColoredTextBox1.CharWidth = 9;
             this.fastColoredTextBox1.CommentPrefix = "--";
             this.fastColoredTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.fastColoredTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SimpleDatabaseConnect.Properties.Settings.Default, "SQL", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
@@ -228,7 +231,7 @@
             this.label2.Location = new System.Drawing.Point(12, 10);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 18);
+            this.label2.Size = new System.Drawing.Size(101, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Connection Type ";
             // 
@@ -249,11 +252,43 @@
             this.tbMessage.TabIndex = 8;
             this.tbMessage.Visible = false;
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rowCountStatusLabel,
+            this.buttonExportToExcel});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 680);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1399, 22);
+            this.statusStrip1.TabIndex = 9;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // rowCountStatusLabel
+            // 
+            this.rowCountStatusLabel.Name = "rowCountStatusLabel";
+            this.rowCountStatusLabel.Size = new System.Drawing.Size(0, 17);
+            // 
+            // buttonExportToExcel
+            // 
+            this.buttonExportToExcel.DropDownButtonWidth = 0;
+            this.buttonExportToExcel.ForeColor = System.Drawing.Color.DarkGreen;
+            this.buttonExportToExcel.Image = ((System.Drawing.Image)(resources.GetObject("buttonExportToExcel.Image")));
+            this.buttonExportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonExportToExcel.Margin = new System.Windows.Forms.Padding(25, 2, 0, 0);
+            this.buttonExportToExcel.Name = "buttonExportToExcel";
+            this.buttonExportToExcel.Size = new System.Drawing.Size(125, 36);
+            this.buttonExportToExcel.Text = "Export to Excel";
+            this.buttonExportToExcel.Visible = false;
+            this.buttonExportToExcel.ButtonClick += new System.EventHandler(this.buttonExportToExcel_ButtonClick);
+            // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1399, 702);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.tbMessage);
             this.Controls.Add(this.tbError);
             this.Controls.Add(this.button1);
@@ -275,6 +310,8 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -294,6 +331,9 @@
         private FastColoredTextBoxNS.FastColoredTextBox fastColoredTextBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbMessage;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel rowCountStatusLabel;
+        private System.Windows.Forms.ToolStripSplitButton buttonExportToExcel;
     }
 }
 

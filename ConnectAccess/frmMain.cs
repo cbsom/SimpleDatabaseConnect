@@ -1,9 +1,11 @@
-﻿using System;
+﻿using ClosedXML.Excel;
+using System;
 using System.Data;
 using System.Data.Common;
 using System.Data.Odbc;
 using System.Data.OleDb;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace SimpleDatabaseConnect
@@ -13,6 +15,18 @@ namespace SimpleDatabaseConnect
         public FrmMain()
         {
             InitializeComponent();
+            this.dataGridView1.RowPostPaint += delegate (object sender, DataGridViewRowPostPaintEventArgs e)
+            {
+                using (var brush = new SolidBrush(this.dataGridView1.RowHeadersDefaultCellStyle.ForeColor))
+                {
+                    e.Graphics.DrawString((e.RowIndex + 1).ToString(),
+                        e.InheritedRowStyle.Font,
+                        brush,
+                        e.RowBounds.Location.X + 15,
+                        e.RowBounds.Location.Y + 4);
+                }
+            };
+
             switch (Properties.Settings.Default.Provider)
             {
                 case "OleDb":
@@ -40,6 +54,30 @@ namespace SimpleDatabaseConnect
             this.ExecuteSql();
         }
 
+        private void buttonExportToExcel_ButtonClick(object sender, EventArgs e)
+        {
+            if (this.dataGridView1.DataSource != null && this.dataGridView1.DataSource is DataTable)
+            {
+                using (SaveFileDialog sfd = new SaveFileDialog())
+                {
+                    sfd.Title = "Save results as Excel file";
+                    sfd.Filter = "Excel file (*.xlsx)|*.xlsx";
+                    sfd.DefaultExt = ".xlsx";
+                    sfd.OverwritePrompt = true;
+
+                    if (sfd.ShowDialog() == DialogResult.OK)
+                    {
+                        using (var workbook = new XLWorkbook())
+                        {
+                            workbook.AddWorksheet(this.dataGridView1.DataSource as DataTable);
+                            workbook.SaveAs(sfd.FileName);
+                            MessageBox.Show($"The data has been successfully exported to {sfd.FileName}.");
+                        }
+                    }
+                }
+            }
+        }
+
         private void ExecuteSql()
         {
             DbConnection con = null;
@@ -50,6 +88,9 @@ namespace SimpleDatabaseConnect
                 : this.fastColoredTextBox1.Selection.Text;
 
             this.tbError.Visible = this.tbMessage.Visible = false;
+            this.buttonExportToExcel.Visible = false;
+            this.buttonExportToExcel.Enabled = false;
+
             try
             {
                 if (this.rbOleDb.Checked)
@@ -85,6 +126,9 @@ namespace SimpleDatabaseConnect
                                 adp.Fill(ds);
                                 this.dataGridView1.DataSource = ds.Tables[0];
                                 this.dataGridView1.Refresh();
+                                this.rowCountStatusLabel.Text = $"{ds.Tables[0].Rows.Count} rows returned";
+                                this.buttonExportToExcel.Visible = true;
+                                this.buttonExportToExcel.Enabled = true;
                             }
                             else
                             {
@@ -93,7 +137,7 @@ namespace SimpleDatabaseConnect
                                     com.CommandText = sql;
                                     con.Open();
                                     int records = com.ExecuteNonQuery();
-                                    this.tbMessage.Text = $"Complete. {records} records affected.";
+                                    this.tbMessage.Text = this.rowCountStatusLabel.Text = $"Complete. {records} records affected.";
                                     this.tbMessage.Visible = true;
                                     con.Close();
                                 }
@@ -125,11 +169,10 @@ namespace SimpleDatabaseConnect
             {
                 this.tbMessage.Visible = false;
             }
-            if(con.State!= ConnectionState.Closed)
+            if (con.State != ConnectionState.Closed)
             {
                 con.Close();
             }
         }
-
     }
 }

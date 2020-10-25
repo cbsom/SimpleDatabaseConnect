@@ -135,7 +135,24 @@
         CgAAAAAAAAAAjQABAAH4/////P///woAAAAAAAAAAKQAAQAB9/////z///8KAAAAAAAAAACWAAEACw==
 </value>
   </data>
+  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="buttonExportToExcel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHRSURBVFhH7ZZNSwJBGMf9Dn0Co0iiU4cuEQSBJBV1KOpQ
+        EPkJwtQKKgkKhBB6EfIUFbm00KVLVlYXwe0SBXmoKMIwUImNMNJKn3wGFdbGl9nVSPAHf5Z5Zp7xN7OI
+        qqrkw+l0gsLMpbaSB24iF+zleV7kOM6S2o4dpQKRSESZhFIBRJFEKQQQ2RKlEkBkSSgVyJXU9oXBxch3
+        PA4PoSdw+7zgOOPBvGuDgbVxaJ7tJ/Ms5BXQTPbV1E7oWtVG7ZjaoLXq5vXQYdVDvUkHyTE1rOQVoH1A
+        oSCCIEiSq4aURYCFyrmB1aMd0rB8uE3Gg3YDGfPnrswaDCtFCzRN90L4TYSXyCtozN3gub2A9+gHtFiG
+        fgnQTkurIUyvYGZvhTRtefbJc+lgQzKPYYVJoM7YCfdBP2kMiEFyE9lrENppaTWESaDB1AWP4QAkEgl4
+        FkPQONUjmcewwiRgc22SJscpT552NyeZxyC009JqSNECbQsjEP2MwZX/hoy9d5cQ/YpB++JoZg2GlaIF
+        jq+9pGF43UzG6a/hiU/IrMEgtNPSagjTKygmrJRFgHZaWg353zcg9+eYdlpaDckrkA0uRv7sD0k2aYFS
+        UnkC5Uhq+ypJVKofBBY7vRSYABIAAAAASUVORK5CYII=
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAgAQEAAAAEAIAAoQgAAhgAAAEBAAAABAAgAKBYAAK5CAAAwMAAAAQAgAKglAADWWAAAMDAAAAEA
