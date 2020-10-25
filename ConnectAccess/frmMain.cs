@@ -49,6 +49,7 @@ namespace SimpleDatabaseConnect
                 ? this.fastColoredTextBox1.Text
                 : this.fastColoredTextBox1.Selection.Text;
 
+            this.tbError.Visible = this.tbMessage.Visible = false;
             try
             {
                 if (this.rbOleDb.Checked)
@@ -78,10 +79,25 @@ namespace SimpleDatabaseConnect
                     {
                         using (adp)
                         {
-                            DataSet ds = new DataSet();
-                            adp.Fill(ds);
-                            this.dataGridView1.DataSource = ds.Tables[0];
-                            this.dataGridView1.Refresh();
+                            if (sql.Trim().StartsWith("select", StringComparison.OrdinalIgnoreCase))
+                            {
+                                DataSet ds = new DataSet();
+                                adp.Fill(ds);
+                                this.dataGridView1.DataSource = ds.Tables[0];
+                                this.dataGridView1.Refresh();
+                            }
+                            else
+                            {
+                                using (var com = con.CreateCommand())
+                                {
+                                    com.CommandText = sql;
+                                    con.Open();
+                                    int records = com.ExecuteNonQuery();
+                                    this.tbMessage.Text = $"Complete. {records} records affected.";
+                                    this.tbMessage.Visible = true;
+                                    con.Close();
+                                }
+                            }
                         }
                     }
                 }
@@ -104,7 +120,16 @@ namespace SimpleDatabaseConnect
                 err = ex.Message + Environment.NewLine + ex.StackTrace;
             }
             this.tbError.Visible = !string.IsNullOrEmpty(err);
-            this.tbError.Text = err;            
-        }        
+            this.tbError.Text = err;
+            if (tbError.Visible)
+            {
+                this.tbMessage.Visible = false;
+            }
+            if(con.State!= ConnectionState.Closed)
+            {
+                con.Close();
+            }
+        }
+
     }
 }

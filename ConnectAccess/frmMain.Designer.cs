@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -42,6 +42,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.fastColoredTextBox1 = new FastColoredTextBoxNS.FastColoredTextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.tbMessage = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
@@ -61,8 +62,8 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -109,7 +110,7 @@
             this.tbError.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbError.Size = new System.Drawing.Size(1368, 357);
             this.tbError.TabIndex = 7;
-            this.tbError.Visible = false;
+            this.tbError.Visible = false;            
             // 
             // rbOdbc
             // 
@@ -231,11 +232,29 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Connection Type ";
             // 
+            // tbMessage
+            // 
+            this.tbMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbMessage.BackColor = System.Drawing.Color.Snow;
+            this.tbMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbMessage.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.tbMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
+            this.tbMessage.Location = new System.Drawing.Point(15, 313);
+            this.tbMessage.Multiline = true;
+            this.tbMessage.Name = "tbMessage";
+            this.tbMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.tbMessage.Size = new System.Drawing.Size(1368, 357);
+            this.tbMessage.TabIndex = 8;
+            this.tbMessage.Visible = false;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1399, 702);
+            this.Controls.Add(this.tbMessage);
             this.Controls.Add(this.tbError);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.fastColoredTextBox1);
@@ -274,6 +293,7 @@
         private System.Windows.Forms.Panel panel1;
         private FastColoredTextBoxNS.FastColoredTextBox fastColoredTextBox1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbMessage;
     }
 }
 
