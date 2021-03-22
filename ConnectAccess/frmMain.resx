@@ -142,17 +142,23 @@
   <data name="buttonExportToExcel.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHRSURBVFhH7ZZNSwJBGMf9Dn0Co0iiU4cuEQSBJBV1KOpQ
-        EPkJwtQKKgkKhBB6EfIUFbm00KVLVlYXwe0SBXmoKMIwUImNMNJKn3wGFdbGl9nVSPAHf5Z5Zp7xN7OI
-        qqrkw+l0gsLMpbaSB24iF+zleV7kOM6S2o4dpQKRSESZhFIBRJFEKQQQ2RKlEkBkSSgVyJXU9oXBxch3
-        PA4PoSdw+7zgOOPBvGuDgbVxaJ7tJ/Ms5BXQTPbV1E7oWtVG7ZjaoLXq5vXQYdVDvUkHyTE1rOQVoH1A
-        oSCCIEiSq4aURYCFyrmB1aMd0rB8uE3Gg3YDGfPnrswaDCtFCzRN90L4TYSXyCtozN3gub2A9+gHtFiG
-        fgnQTkurIUyvYGZvhTRtefbJc+lgQzKPYYVJoM7YCfdBP2kMiEFyE9lrENppaTWESaDB1AWP4QAkEgl4
-        FkPQONUjmcewwiRgc22SJscpT552NyeZxyC009JqSNECbQsjEP2MwZX/hoy9d5cQ/YpB++JoZg2GlaIF
-        jq+9pGF43UzG6a/hiU/IrMEgtNPSagjTKygmrJRFgHZaWg353zcg9+eYdlpaDckrkA0uRv7sD0k2aYFS
-        UnkC5Uhq+ypJVKofBBY7vRSYABIAAAAASUVORK5CYII=
+        YQUAAAAJcEhZcwAAEnQAABJ0Ad5mH3gAAAHQSURBVFhH7ZZPSwJBGIf9Dn0Co0iiU4cuEQSBJBV1KOpQ
+        EPkJwtQKKgkKhBD6I+QpKnJJ6NIlK6uL4HaJgjxUFGEYqIQRRlrpm++wCtq47uxqJPjAj2XemXd8ZhZR
+        VRUxnE4nKMycsJU8cBO5YC/HcdF0LMJ27CgViMViyiSUCiCKJEohgMiWKJUAIktCqUChCNsXBxcj38kk
+        PISfwOP3gePMBeZdGwysjUPzbD+ZZ0FUQDPZV1M7oWtVG7VjaoPWqpvXQ4dVD/UmHaTH1LAiKkD7gGJB
+        eJ7PSaEaUhYBFirnBlaPdkjD8uE2GQ/aDWTsOndn12BYkSzQNN0LkbcovMReQWPuBu/tBbzHP6DFMvRL
+        gHZaWg1hegUzeyukacu7T55LBxs58xhWmATqjJ1wHwqQxmA0RG4ifw1COy2thjAJNJi64DEShFQqBc/R
+        MDRO9eTMY1hhErC5N0mT49RFnnYPlzOPQWinpdUQyQJtCyMQ/0zAVeCGjH13lxD/SkD74mh2DYYVyQLH
+        1z7SMLxuJuPM1/DEz2fXYBDaaWk1hOkVSAkrZRGgnZZWQ/73Dcj9OaadllZDRAXywcXIn/0hyScjUEoq
+        T6AcEbavkkal+gGxmDuQbwAcvQAAAABJRU5ErkJggg==
 </value>
   </data>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>154, 17</value>
+  </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>154, 17</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAgAQEAAAAEAIAAoQgAAhgAAAEBAAAABAAgAKBYAAK5CAAAwMAAAAQAgAKglAADWWAAAMDAAAAEA
