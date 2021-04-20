@@ -49,10 +49,15 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnTestConnection = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -61,7 +66,7 @@
             this.label1.Location = new System.Drawing.Point(12, 38);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(126, 18);
+            this.label1.Size = new System.Drawing.Size(104, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Connection String";
             // 
@@ -71,34 +76,30 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeight = 29;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 313);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.RowHeadersWidth = 50;
-            this.dataGridView1.Size = new System.Drawing.Size(1370, 357);
+            this.dataGridView1.Size = new System.Drawing.Size(1368, 277);
             this.dataGridView1.TabIndex = 4;
             // 
             // tbError
             // 
-            this.tbError.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbError.BackColor = System.Drawing.Color.Snow;
             this.tbError.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbError.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbError.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.tbError.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.tbError.Location = new System.Drawing.Point(15, 313);
+            this.tbError.Location = new System.Drawing.Point(0, 0);
             this.tbError.Multiline = true;
             this.tbError.Name = "tbError";
             this.tbError.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbError.Size = new System.Drawing.Size(1368, 357);
+            this.tbError.Size = new System.Drawing.Size(1368, 277);
             this.tbError.TabIndex = 7;
             this.tbError.Visible = false;
             // 
@@ -112,7 +113,7 @@
             this.rbOdbc.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.rbOdbc.Location = new System.Drawing.Point(9, 8);
             this.rbOdbc.Name = "rbOdbc";
-            this.rbOdbc.Size = new System.Drawing.Size(64, 22);
+            this.rbOdbc.Size = new System.Drawing.Size(53, 19);
             this.rbOdbc.TabIndex = 0;
             this.rbOdbc.Text = "Odbc";
             this.rbOdbc.UseVisualStyleBackColor = true;
@@ -128,7 +129,7 @@
             this.rbSqlServer.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.rbSqlServer.Location = new System.Drawing.Point(155, 7);
             this.rbSqlServer.Name = "rbSqlServer";
-            this.rbSqlServer.Size = new System.Drawing.Size(105, 22);
+            this.rbSqlServer.Size = new System.Drawing.Size(86, 19);
             this.rbSqlServer.TabIndex = 6;
             this.rbSqlServer.TabStop = true;
             this.rbSqlServer.Text = "SQL Server";
@@ -145,7 +146,7 @@
             this.rbOleDb.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.rbOleDb.Location = new System.Drawing.Point(79, 8);
             this.rbOleDb.Name = "rbOleDb";
-            this.rbOleDb.Size = new System.Drawing.Size(70, 22);
+            this.rbOleDb.Size = new System.Drawing.Size(59, 19);
             this.rbOleDb.TabIndex = 1;
             this.rbOleDb.Text = "OleDb";
             this.rbOleDb.UseVisualStyleBackColor = true;
@@ -160,7 +161,7 @@
             this.textBox1.Location = new System.Drawing.Point(137, 35);
             this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(1167, 26);
+            this.textBox1.Size = new System.Drawing.Size(1167, 23);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = global::SimpleDatabaseConnect.Properties.Settings.Default.conString;
             this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
@@ -178,8 +179,6 @@
             // 
             // fastColoredTextBox1
             // 
-            this.fastColoredTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.fastColoredTextBox1.AutoCompleteBracketsList = new char[] {
         '(',
         ')',
@@ -192,26 +191,27 @@
         '\'',
         '\''};
             this.fastColoredTextBox1.AutoIndentCharsPatterns = "";
-            this.fastColoredTextBox1.AutoScrollMinSize = new System.Drawing.Size(33, 20);
+            this.fastColoredTextBox1.AutoScrollMinSize = new System.Drawing.Size(29, 16);
             this.fastColoredTextBox1.BackBrush = null;
             this.fastColoredTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.fastColoredTextBox1.CharHeight = 20;
-            this.fastColoredTextBox1.CharWidth = 11;
+            this.fastColoredTextBox1.CharHeight = 16;
+            this.fastColoredTextBox1.CharWidth = 9;
             this.fastColoredTextBox1.CommentPrefix = "--";
             this.fastColoredTextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.fastColoredTextBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::SimpleDatabaseConnect.Properties.Settings.Default, "SQL", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.fastColoredTextBox1.DisabledColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))), ((int)(((byte)(180)))));
+            this.fastColoredTextBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.fastColoredTextBox1.Font = new System.Drawing.Font("Courier New", 11F);
             this.fastColoredTextBox1.IsReplaceMode = false;
             this.fastColoredTextBox1.Language = FastColoredTextBoxNS.Language.SQL;
             this.fastColoredTextBox1.LeftBracket = '(';
-            this.fastColoredTextBox1.Location = new System.Drawing.Point(15, 99);
+            this.fastColoredTextBox1.Location = new System.Drawing.Point(0, 0);
             this.fastColoredTextBox1.Name = "fastColoredTextBox1";
             this.fastColoredTextBox1.Paddings = new System.Windows.Forms.Padding(0);
             this.fastColoredTextBox1.RightBracket = ')';
             this.fastColoredTextBox1.SelectionColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
             this.fastColoredTextBox1.ServiceColors = ((FastColoredTextBoxNS.ServiceColors)(resources.GetObject("fastColoredTextBox1.ServiceColors")));
-            this.fastColoredTextBox1.Size = new System.Drawing.Size(1368, 207);
+            this.fastColoredTextBox1.Size = new System.Drawing.Size(1368, 284);
             this.fastColoredTextBox1.TabIndex = 0;
             this.fastColoredTextBox1.Text = global::SimpleDatabaseConnect.Properties.Settings.Default.SQL;
             this.fastColoredTextBox1.Zoom = 100;
@@ -222,24 +222,22 @@
             this.label2.Location = new System.Drawing.Point(12, 7);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(124, 18);
+            this.label2.Size = new System.Drawing.Size(101, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Connection Type ";
             // 
             // tbMessage
             // 
-            this.tbMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tbMessage.BackColor = System.Drawing.Color.Snow;
             this.tbMessage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tbMessage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbMessage.Font = new System.Drawing.Font("Courier New", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
             this.tbMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.tbMessage.Location = new System.Drawing.Point(15, 313);
+            this.tbMessage.Location = new System.Drawing.Point(0, 0);
             this.tbMessage.Multiline = true;
             this.tbMessage.Name = "tbMessage";
             this.tbMessage.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbMessage.Size = new System.Drawing.Size(1368, 357);
+            this.tbMessage.Size = new System.Drawing.Size(1368, 277);
             this.tbMessage.TabIndex = 8;
             this.tbMessage.Visible = false;
             // 
@@ -259,7 +257,7 @@
             // rowCountStatusLabel
             // 
             this.rowCountStatusLabel.Name = "rowCountStatusLabel";
-            this.rowCountStatusLabel.Size = new System.Drawing.Size(0, 16);
+            this.rowCountStatusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // buttonExportToExcel
             // 
@@ -269,7 +267,7 @@
             this.buttonExportToExcel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.buttonExportToExcel.Margin = new System.Windows.Forms.Padding(25, 2, 0, 0);
             this.buttonExportToExcel.Name = "buttonExportToExcel";
-            this.buttonExportToExcel.Size = new System.Drawing.Size(145, 36);
+            this.buttonExportToExcel.Size = new System.Drawing.Size(125, 36);
             this.buttonExportToExcel.Text = "Export to Excel";
             this.buttonExportToExcel.Visible = false;
             this.buttonExportToExcel.ButtonClick += new System.EventHandler(this.buttonExportToExcel_ButtonClick);
@@ -281,7 +279,7 @@
             this.lblConnectionTest.ForeColor = System.Drawing.Color.DarkGray;
             this.lblConnectionTest.Location = new System.Drawing.Point(190, 74);
             this.lblConnectionTest.Name = "lblConnectionTest";
-            this.lblConnectionTest.Size = new System.Drawing.Size(128, 15);
+            this.lblConnectionTest.Size = new System.Drawing.Size(112, 13);
             this.lblConnectionTest.TabIndex = 10;
             this.lblConnectionTest.Text = "Untested connection...";
             // 
@@ -317,19 +315,39 @@
             this.btnTestConnection.UseVisualStyleBackColor = true;
             this.btnTestConnection.Click += new System.EventHandler(this.btnTestConnection_Click);
             // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.splitContainer1.Location = new System.Drawing.Point(15, 101);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.fastColoredTextBox1);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.tbMessage);
+            this.splitContainer1.Panel2.Controls.Add(this.tbError);
+            this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
+            this.splitContainer1.Size = new System.Drawing.Size(1368, 569);
+            this.splitContainer1.SplitterDistance = 284;
+            this.splitContainer1.SplitterWidth = 8;
+            this.splitContainer1.TabIndex = 12;
+            // 
             // FrmMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1399, 702);
+            this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.btnTestConnection);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.tbMessage);
-            this.Controls.Add(this.tbError);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.fastColoredTextBox1);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -349,6 +367,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,6 +397,7 @@
         private System.Windows.Forms.Label lblConnectionTest;
         private System.Windows.Forms.Button btnTestConnection;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.SplitContainer splitContainer1;
     }
 }
 
