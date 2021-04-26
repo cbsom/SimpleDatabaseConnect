@@ -1,5 +1,5 @@
-﻿using ClosedXML.Excel;
-using System;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.Odbc;
@@ -7,6 +7,8 @@ using System.Data.OleDb;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
+using ClosedXML.Excel;
+using SimpleDatabaseConnect.Properties;
 
 namespace SimpleDatabaseConnect
 {
@@ -14,47 +16,45 @@ namespace SimpleDatabaseConnect
     {
         public FrmMain()
         {
-            InitializeComponent();
-            this.dataGridView1.RowPostPaint += delegate (object sender, DataGridViewRowPostPaintEventArgs e)
-            {
-                using (var brush = new SolidBrush(this.dataGridView1.RowHeadersDefaultCellStyle.ForeColor))
+            this.InitializeComponent();
+            dataGridView1.RowPostPaint +=
+                delegate (object sender, DataGridViewRowPostPaintEventArgs e)
                 {
-                    e.Graphics.DrawString((e.RowIndex + 1).ToString(),
-                        e.InheritedRowStyle.Font,
-                        brush,
-                        e.RowBounds.Location.X + 15,
-                        e.RowBounds.Location.Y + 4);
-                }
-            };
+                    using (var brush =
+                        new SolidBrush(dataGridView1.RowHeadersDefaultCellStyle.ForeColor))
+                    {
+                        e.Graphics.DrawString((e.RowIndex + 1).ToString(),
+                            e.InheritedRowStyle.Font,
+                            brush,
+                            e.RowBounds.Location.X + 15,
+                            e.RowBounds.Location.Y + 4);
+                    }
+                };
 
-            switch (Properties.Settings.Default.Provider)
+            switch (Settings.Default.Provider)
             {
                 case "OleDb":
-                    this.rbOleDb.Checked = true;
+                    rbOleDb.Checked = true;
                     break;
                 case "SqlServer":
-                    this.rbSqlServer.Checked = true;
+                    rbSqlServer.Checked = true;
                     break;
                 case "Odbc":
-                    this.rbOdbc.Checked = true;
+                    rbOdbc.Checked = true;
                     break;
             }
         }
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            if (this.textBox1.Text.Length > 0)
-            {
+            if (textBox1.Text.Length > 0)
                 this.testConnectionAsync();
-            }
         }
 
         private void frmMain_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyData == Keys.F5)
-            {
                 this.ExecuteSql();
-            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -74,23 +74,24 @@ namespace SimpleDatabaseConnect
 
         private void buttonExportToExcel_ButtonClick(object sender, EventArgs e)
         {
-            if (this.dataGridView1.DataSource != null && this.dataGridView1.DataSource is DataTable)
-            {
-                using (SaveFileDialog sfd = new SaveFileDialog())
-                {
-                    sfd.Title = "Save results as Excel file";
-                    sfd.Filter = "Excel file (*.xlsx)|*.xlsx";
-                    sfd.DefaultExt = ".xlsx";
-                    sfd.OverwritePrompt = true;
+            if (!(dataGridView1.DataSource is DataTable table))
+                return;
 
-                    if (sfd.ShowDialog() == DialogResult.OK)
+            using (var sfd = new SaveFileDialog())
+            {
+                sfd.Title = "Save results as Excel file";
+                sfd.Filter = "Excel file (*.xlsx)|*.xlsx";
+                sfd.DefaultExt = ".xlsx";
+                sfd.OverwritePrompt = true;
+
+                if (sfd.ShowDialog() == DialogResult.OK)
+                {
+                    using (var workbook = new XLWorkbook())
                     {
-                        using (var workbook = new XLWorkbook())
-                        {
-                            workbook.AddWorksheet(this.dataGridView1.DataSource as DataTable);
-                            workbook.SaveAs(sfd.FileName);
-                            MessageBox.Show($"The data has been successfully exported to {sfd.FileName}.");
-                        }
+                        workbook.AddWorksheet(table);
+                        workbook.SaveAs(sfd.FileName);
+                        MessageBox.Show(
+                            $"The data has been successfully exported to {sfd.FileName}.");
                     }
                 }
             }
@@ -98,14 +99,16 @@ namespace SimpleDatabaseConnect
 
         private void ExecuteSql()
         {
-            string sql = this.fastColoredTextBox1.Selection.IsEmpty
-                    ? this.fastColoredTextBox1.Text
-                    : this.fastColoredTextBox1.Selection.Text;
+            string sql = fastColoredTextBox1.Selection.IsEmpty
+                ? fastColoredTextBox1.Text
+                : fastColoredTextBox1.Selection.Text;
             string err = null;
 
-            this.tbError.Visible = this.tbMessage.Visible = false;
-            this.buttonExportToExcel.Visible = false;
-            this.buttonExportToExcel.Enabled = false;
+            tbError.Visible = tbMessage.Visible = false;
+            tbError.Text = "";
+            tbMessage.Text = "";
+            buttonExportToExcel.Visible = false;
+            buttonExportToExcel.Enabled = false;
 
             this.SaveConnectionType();
 
@@ -113,56 +116,105 @@ namespace SimpleDatabaseConnect
             {
                 using (DbConnection con = this.GetConnection())
                 {
-                    using (DbDataAdapter adp = this.GetAdapter(con, sql))
+                    try
                     {
-                        try
+                        if (sql.Trim().StartsWith("select", StringComparison.OrdinalIgnoreCase))
                         {
+                            var ds = new DataSet();
 
-                            if (sql.Trim().StartsWith("select", StringComparison.OrdinalIgnoreCase))
+                            using (DbDataAdapter adp = GetAdapter(con, sql))
                             {
-                                DataSet ds = new DataSet();
                                 adp.Fill(ds);
-                                this.dataGridView1.DataSource = ds.Tables[0];
-                                this.dataGridView1.Refresh();
-                                this.rowCountStatusLabel.Text = $"{ds.Tables[0].Rows.Count} rows returned";
-                                this.buttonExportToExcel.Visible = true;
-                                this.buttonExportToExcel.Enabled = true;
                             }
-                            else
+
+                            dataGridView1.DataSource = ds.Tables[0];
+                            dataGridView1.Refresh();
+                            rowCountStatusLabel.Text = $@"{ds.Tables[0].Rows.Count} rows returned";
+                            buttonExportToExcel.Visible = true;
+                            buttonExportToExcel.Enabled = true;
+                        }
+                        else
+                        {
+                            using (DbCommand com = con.CreateCommand())
                             {
-                                using (var com = con.CreateCommand())
+                                var records = 0;
+                                var sqlStatements = new HashSet<string>();
+                                if (cbSplit.Checked)
                                 {
-                                    com.CommandText = sql;
-                                    con.Open();
-                                    int records = com.ExecuteNonQuery();
-                                    this.tbMessage.Text = this.rowCountStatusLabel.Text = $"Complete. {records} records affected.";
-                                    this.tbMessage.Visible = true;
+                                    foreach (string s in sql.Split(';'))
+                                    {
+                                        sqlStatements.Add(s);
+                                    }
                                 }
+                                else
+                                {
+                                    sqlStatements.Add(sql);
+                                }
+
+                                con.Open();
+
+
+                                foreach (string sqlStatement in sqlStatements)
+                                {
+                                    com.CommandText = sqlStatement;
+                                    try
+                                    {
+                                        int r = com.ExecuteNonQuery();
+                                        records += r;
+                                        tbMessage.AppendText($@"Completed {sqlStatement}. {r} records affected.");
+                                    }
+                                    catch (OleDbException oe)
+                                    {
+                                        tbMessage.AppendText($@"FAILED: {sqlStatement}. {oe.Message}.");
+                                    }
+                                    catch (SqlException se)
+                                    {
+                                        tbMessage.AppendText($@"FAILED: {sqlStatement}. {se.Message}.");
+                                    }
+                                    catch (OdbcException de)
+                                    {
+                                        tbMessage.AppendText($@"FAILED: {sqlStatement}. {de.Message}.");
+                                    }
+                                    catch (Exception ex)
+                                    {
+                                        tbMessage.AppendText($@"FAILED: {sqlStatement}. {ex.Message}.");
+                                    }
+
+                                    this.tbMessage.Refresh();
+                                }
+
+
+                                if (con.State != ConnectionState.Closed)
+                                {
+                                    con.Close();
+                                }
+
+                                rowCountStatusLabel.Text =
+                                    $@"Complete. {records} records affected.";
+                                tbMessage.Visible = true;
                             }
                         }
-                        catch (OleDbException oe)
-                        {
-                            err = oe.Message + Environment.NewLine + oe.StackTrace;
-                        }
-                        catch (SqlException se)
-                        {
-                            err = se.Message + Environment.NewLine + se.StackTrace;
-                        }
-                        catch (OdbcException de)
-                        {
-                            err = de.Message + Environment.NewLine + de.StackTrace;
-                        }
-                        catch (Exception ex)
-                        {
-                            err = ex.Message + Environment.NewLine + ex.StackTrace;
-                        }
-                        finally
-                        {
-                            if (con != null && con.State != ConnectionState.Closed)
-                            {
-                                con.Close();
-                            }
-                        }
+                    }
+                    catch (OleDbException oe)
+                    {
+                        err = oe.Message + Environment.NewLine + oe.StackTrace;
+                    }
+                    catch (SqlException se)
+                    {
+                        err = se.Message + Environment.NewLine + se.StackTrace;
+                    }
+                    catch (OdbcException de)
+                    {
+                        err = de.Message + Environment.NewLine + de.StackTrace;
+                    }
+                    catch (Exception ex)
+                    {
+                        err = ex.Message + Environment.NewLine + ex.StackTrace;
+                    }
+                    finally
+                    {
+                        if (con != null && con.State != ConnectionState.Closed)
+                            con.Close();
                     }
                 }
             }
@@ -173,12 +225,10 @@ namespace SimpleDatabaseConnect
             }
 
 
-            this.tbError.Visible = !string.IsNullOrEmpty(err);
-            this.tbError.Text = err;
+            tbError.Visible = !string.IsNullOrEmpty(err);
+            tbError.Text = err;
             if (tbError.Visible)
-            {
-                this.tbMessage.Visible = false;
-            }
+                tbMessage.Visible = false;
         }
 
 
@@ -191,12 +241,12 @@ namespace SimpleDatabaseConnect
         {
             string err = null;
 
-            this.lblConnectionTest.Text = "Testing connection...";
-            this.lblConnectionTest.ForeColor = Color.Purple;
+            lblConnectionTest.Text = @"Testing connection...";
+            lblConnectionTest.ForeColor = Color.Purple;
 
             try
             {
-                using (var con = this.GetConnection())
+                using (DbConnection con = this.GetConnection())
                 {
                     try
                     {
@@ -223,9 +273,7 @@ namespace SimpleDatabaseConnect
                     finally
                     {
                         if (con != null && con.State != ConnectionState.Closed)
-                        {
                             con.Close();
-                        }
                     }
                 }
             }
@@ -237,13 +285,13 @@ namespace SimpleDatabaseConnect
 
             if (string.IsNullOrEmpty(err))
             {
-                this.lblConnectionTest.Text = "Connection test succeeded.";
-                this.lblConnectionTest.ForeColor = Color.DarkGreen;
+                lblConnectionTest.Text = "Connection test succeeded.";
+                lblConnectionTest.ForeColor = Color.DarkGreen;
             }
             else
             {
-                this.lblConnectionTest.Text = "Connection test failed. " + err;
-                this.lblConnectionTest.ForeColor = Color.Red;
+                lblConnectionTest.Text = "Connection test failed. " + err;
+                lblConnectionTest.ForeColor = Color.Red;
             }
         }
 
@@ -251,37 +299,35 @@ namespace SimpleDatabaseConnect
         {
             DbConnection con = null;
 
-            if (this.rbOleDb.Checked)
+            if (rbOleDb.Checked)
             {
-                con = new OleDbConnection(this.textBox1.Text.Trim());
+                con = new OleDbConnection(textBox1.Text.Trim());
             }
-            else if (this.rbSqlServer.Checked)
+            else if (rbSqlServer.Checked)
             {
-                con = new SqlConnection(this.textBox1.Text.Trim());
+                con = new SqlConnection(textBox1.Text.Trim());
             }
-            else if (this.rbOdbc.Checked)
-            {
-                con = new OdbcConnection(this.textBox1.Text.Trim());
-            }
+            else if (rbOdbc.Checked)
+                con = new OdbcConnection(textBox1.Text.Trim());
 
             return con;
         }
 
-        private DbDataAdapter GetAdapter(DbConnection con, string sql)
+        private static DbDataAdapter GetAdapter(DbConnection con, string sql)
         {
             DbDataAdapter adp = null;
 
-            if (con is OleDbConnection)
+            switch (con)
             {
-                adp = new OleDbDataAdapter(sql, con as OleDbConnection);
-            }
-            else if (con is SqlConnection)
-            {
-                adp = new SqlDataAdapter(sql, con as SqlConnection);
-            }
-            else if (con is OdbcConnection)
-            {
-                adp = new OdbcDataAdapter(sql, con as OdbcConnection);
+                case OleDbConnection connection:
+                    adp = new OleDbDataAdapter(sql, connection);
+                    break;
+                case SqlConnection sqlConnection:
+                    adp = new SqlDataAdapter(sql, sqlConnection);
+                    break;
+                case OdbcConnection odbcConnection:
+                    adp = new OdbcDataAdapter(sql, odbcConnection);
+                    break;
             }
 
             return adp;
@@ -289,20 +335,18 @@ namespace SimpleDatabaseConnect
 
         private void SaveConnectionType()
         {
-            if (this.rbOleDb.Checked)
+            if (rbOleDb.Checked)
             {
-                Properties.Settings.Default.Provider = "OleDb";
+                Settings.Default.Provider = "OleDb";
             }
-            else if (this.rbSqlServer.Checked)
+            else if (rbSqlServer.Checked)
             {
-                Properties.Settings.Default.Provider = "SqlServer";
+                Settings.Default.Provider = "SqlServer";
             }
-            else if (this.rbOdbc.Checked)
-            {
-                Properties.Settings.Default.Provider = "Odbc";
-            }
+            else if (rbOdbc.Checked)
+                Settings.Default.Provider = "Odbc";
 
-            Properties.Settings.Default.Save();
+            Settings.Default.Save();
         }
     }
 }

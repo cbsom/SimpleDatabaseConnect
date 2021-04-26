@@ -50,6 +50,7 @@
             this.btnTestConnection = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.cbSplit = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fastColoredTextBox1)).BeginInit();
@@ -338,11 +339,24 @@
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 12;
             // 
+            // cbSplit
+            // 
+            this.cbSplit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbSplit.AutoSize = true;
+            this.cbSplit.Location = new System.Drawing.Point(1267, 73);
+            this.cbSplit.Name = "cbSplit";
+            this.cbSplit.Size = new System.Drawing.Size(116, 19);
+            this.cbSplit.TabIndex = 13;
+            this.cbSplit.Text = "Multi statements";
+            this.toolTip1.SetToolTip(this.cbSplit, "Split SQL at the semi-colons and run each part separatetly");
+            this.cbSplit.UseVisualStyleBackColor = true;
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1399, 702);
+            this.Controls.Add(this.cbSplit);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.btnTestConnection);
             this.Controls.Add(this.statusStrip1);
@@ -398,6 +412,7 @@
         private System.Windows.Forms.Button btnTestConnection;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.SplitContainer splitContainer1;
+        private System.Windows.Forms.CheckBox cbSplit;
     }
 }
 
